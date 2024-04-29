@@ -5,7 +5,7 @@ import app from '../app'
 import {  describe, it, beforeAll, afterAll  } from '@jest/globals'
 
 describe('userService', () => {
-    // Limpa todos os usuários após todos os testes
+    
     afterAll(async () => {
         await userModel.deleteMany({});
     });
@@ -20,13 +20,13 @@ describe('userService', () => {
 
         await userService.createUser(userData);
         
-        // Verifica se o usuário foi criado com sucesso
+        
         const createdUser = await userModel.findOne({ email: userData.email });
         expect(createdUser).toBeDefined();
         expect(createdUser?.username).toBe(userData.username);
         expect(createdUser?.peso).toBe(userData.peso);
-        expect(createdUser?.senha).toBeDefined(); // A senha deve ser criptografada
+        expect(createdUser?.senha).toBeDefined(); 
     });
 
-    // Restante dos testes...
+   
 });
